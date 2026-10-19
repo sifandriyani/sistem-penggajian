@@ -1,3 +1,4 @@
+```php
 <?php
 
 use Illuminate\Foundation\Application;
@@ -13,6 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
 
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies(at: '*');
+
         $middleware->alias([
             'admin' => \App\Http\Middleware\EnsureIsAdmin::class,
         ]);
@@ -25,3 +28,4 @@ return Application::configure(basePath: dirname(__DIR__))
     })
 
     ->create();
+```
